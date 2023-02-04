@@ -1,25 +1,22 @@
-import React, { useState, useEffect } from "react";
-import "../styles/App.css";
-import ChildComponent from "./ChildComponent";
+import React , {useState,useEffect} from 'react'
+import '../styles/App.css';
+import ChildComponent from './ChildComponent';
 const App = () => {
-  //code here
-  const [input, setInput] = useState(0);
-  const [val, setval] = useState(0);
-  const change = () => {};
-  const handleChange = (e) => {
-    setInput(e.target.value);
-  };
+  const[input1, setInput1] = useState(0)
 
   return (
     <div id="main">
-      <ChildComponent input={input} />
-      <input id="input" value={input} onChange={handleChange} />
-
-      <p id="output" onchange={change}>
-        {input * input}
-      </p>
+      <ChildComponent  input ={ 
+        <input id='input' onChange={(e) => {
+            let ans = e.target.value;
+            ans = Math.pow(ans, 2);
+            setInput1(ans);
+        }} />
+      }/>
+      <p id='output'>{input1}</p>
     </div>
-  );
-};
+  )
+}
+
 
 export default App;
